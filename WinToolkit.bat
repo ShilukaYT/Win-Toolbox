@@ -72,7 +72,7 @@ call :GetOSInfo
 call :CreUI
 Echo   Hello %USERNAME%, Computer Name: %COMPUTERNAME%
 echo   Current OS: Windows %winver% %Edition%, Build: %build% (%Ver%)
-echo   
+echo.
 echo %Line%
 echo.
 echo   
