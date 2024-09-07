@@ -110,10 +110,10 @@ goto :main
 
 :CreUI
 :: Create UI
-echo %Line%
-echo                                      Windows Toolbox
-echo                                    Made by Hieu GL Lite
-echo %line%
+%nhcolor% 07 %Line%
+%nhcolor% 07 "                                      %SWhite%Windows Toolbox
+echo                                    Made by %SBlue%Hieu GL Lite
+%nhcolor% 07 %line%
 echo.
 goto :EOF
 
@@ -123,25 +123,70 @@ call :CreUI
 %nhcolor% 07 "  %Red%Hello %USERNAME% %White%| %Yellow%Computer Name: %COMPUTERNAME%"
 %nhcolor% 07 "  %Green%Current OS: Windows %winver% %Edition% %White%| %Cyan%Build: %build% (%Ver%)"
 echo.
-echo ===============================================================================================
+%nhcolor% 07 ===============================================================================================
 echo                                    Application Installer
 %nhcolor% 07 " %Green%- Internet Browser                 - Game Client               - Android Games"
 %nhcolor% 07 " %Yellow%+ [1] Google Chrome                %Blue%+ [11] Steam                %Magenta%+ [23] Google Play Games"
-%nhcolor% 07 " %Yellow%+ [2] Microsoft Edge + webview2    %Blue%+ [12] Epic Games           %Magenta%+ [24] Free Fire MAX"
+%nhcolor% 07 " %Yellow%+ [2] Microsoft Edge + Webview2    %Blue%+ [12] Epic Games           %Magenta%+ [24] Free Fire MAX"
 %nhcolor% 07 " %Yellow%+ [3] Mozilla Firefox              %Blue%+ [13] Xbox                 %Magenta%+ [25] Clash of Clans"
 %nhcolor% 07 " %SWhite%- Zip and Unzip                    %Blue%+ [14] HoyoPlay             %SBlue%- System components"
-%nhcolor% 07 " + [4] WinRAR (Activated)           - Software Development      + [26] Visual C++ 2005 - 2022"
-%nhcolor% 07 " - Multimedia                       + [15] Visual Studio Code   + [27] DirectX
-%nhcolor% 07 " + [5] VLC Media player             + [16] Visual Studio        + [28] Windows App SDK
-%nhcolor% 07 " + [6] Windows Meida Player (UWP)   + [17] Github Desktop       - Virtual Machine
-%nhcolor% 07 " + [7] Microsoft Photos             + [18] Python               + [29] VMware Workstation Pro
-%nhcolor% 07 " - Office                           + [19] Sublime Text         + [30] Oracle VM VirtualBox
-%nhcolor% 07 " + [8] Microsoft Office             - Android Emulator          - Recording and Live Streaming
-%nhcolor% 07 " + [9] WPS Office                   + [20] BlueStacks           + [31] OBS Studio
-%nhcolor% 07 " - App Store                        + [21] LDPlayer             + [32] Streamlab OBS
-%nhcolor% 07 " + [10] Microsoft Store             + [22] MSI App Player       + [33] TikTok Live Studio
-echo %line%
-%nhcolor% 07 " [Z] Subscribe to Hieu GL Lite                                         Page 1 - [N] Next Page"
+%nhcolor% 07 " %SRed%+ [4] WinRAR (Activated)           %SCyan%- Software Development      %Lightgray%+ [26] Visual C++ 2005 - 2022"
+%nhcolor% 07 " %SMagenta%- Multimedia                       %SMagenta%+ [15] Visual Studio Code   %Lightgray%+ [27] DirectX
+%nhcolor% 07 " %SBlue%+ [5] VLC Media player             %SMagenta%+ [16] Visual Studio        %Lightgray%+ [28] Windows App SDK
+%nhcolor% 07 " %SBlue%+ [6] Windows Meida Player (UWP)   %SMagenta%+ [17] Github Desktop       %SWhite%- Virtual Machine
+%nhcolor% 07 " %SBlue%+ [7] Microsoft Photos             %SMagenta%+ [18] Python               %SYellow%+ [29] VMware Workstation Pro
+%nhcolor% 07 " %SLightGray%- Office                           %SMagenta%+ [19] Sublime Text         %SYellow%+ [30] Oracle VM VirtualBox
+%nhcolor% 07 " %SLightGray%+ [8] Microsoft Office             %Bold%- Android Emulator          %Blue%- Recording and Live Streaming
+%nhcolor% 07 " %SLightGray%+ [9] WPS Office                   %SRed%+ [20] BlueStacks           %Green%+ [31] OBS Studio
+%nhcolor% 07 " %SGreen%- App Store                        %SRed%+ [21] LDPlayer             %Green%+ [32] Streamlab OBS
+%nhcolor% 07 " + [10] Microsoft Store             %SRed%+ [22] MSI App Player       %Green%+ [33] TikTok Live Studio
+%nhcolor% 07 %line%
+%nhcolor% 07 " [Z] Subscribe to Hieu GL Lite                                         Page 1"
 %nhcolor% 07 " [X] Quit"
-echo %line%
+%nhcolor% 07 %line%
 set /p MainChoice=" %SWhite%Enter Your Choice and ENTER: "
+if "%MainChoice%"=="1" goto :Chrome
+if "%MainChoice%"=="2"
+if "%MainChoice%"=="3"
+if "%MainChoice%"=="4"
+if "%MainChoice%"=="5"
+if "%MainChoice%"=="6"
+if "%MainChoice%"=="7"
+if "%MainChoice%"=="8"
+if "%MainChoice%"=="9"
+if "%MainChoice%"=="10"
+if "%MainChoice%"=="11"
+if "%MainChoice%"=="12"
+if "%MainChoice%"=="13"
+if "%MainChoice%"=="14"
+if "%MainChoice%"=="15"
+if "%MainChoice%"=="16"
+if "%MainChoice%"=="17"
+if "%MainChoice%"=="18"
+if "%MainChoice%"=="19"
+if "%MainChoice%"=="20"
+if "%MainChoice%"=="21"
+if "%MainChoice%"=="22"
+if "%MainChoice%"=="23"
+if "%MainChoice%"=="24"
+if "%MainChoice%"=="25"
+if "%MainChoice%"=="26"
+if "%MainChoice%"=="27"
+if "%MainChoice%"=="28"
+if "%MainChoice%"=="29"
+if "%MainChoice%"=="30"
+if "%MainChoice%"=="31"
+if "%MainChoice%"=="32"
+if "%MainChoice%"=="33"
+if "%MainChoice%"=="z"
+if "%MainChoice%"=="Z"
+if "%MainChoice%"=="x"
+if "%MainChoice%"=="X"
+
+:Chrome
+cls
+call :CreUI
+%nhcolor% 07 " Do you want to install Google Chrome?"
+%nhcolor% 07 " [1] YES (>700MB)              [2] NO"
+set /p ChromeChoice=" %SWhite%Enter Your Choice and ENTER: "
+if
