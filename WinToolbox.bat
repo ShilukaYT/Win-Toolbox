@@ -47,8 +47,9 @@ cd /d %~dp0
 
 set Bin=%~dp0Bin
 set Temp=%~dp0Temp
-set Download=%~dp0Download
+set Download=%~dp0Downloads
 
+if not exist %Temp% mkdir %Temp%
 ::Set color
 :: NORMAL FOREG COLORS
 set nhcolorsetcolor=
@@ -106,7 +107,7 @@ set DisableX=%Bin%\ConsoleNoClose.exe
 
 set "Line================================================================================================"
 
-goto :main
+goto :Main
 
 :CreUI
 :: Create UI
@@ -118,6 +119,7 @@ echo.
 goto :EOF
 
 :Main
+cls
 call :GetOSInfo
 call :CreUI
 %nhcolor% 07 "  %Red%Hello %USERNAME% %White%| %Yellow%Computer Name: %COMPUTERNAME%"
@@ -145,9 +147,27 @@ echo                                    Application Installer
 %nhcolor% 07 " [X] Quit"
 %nhcolor% 07 %line%
 set /p MainChoice=" %SWhite%Enter Your Choice and ENTER: "
-if "%MainChoice%"=="1" goto :Chrome
-if "%MainChoice%"=="2"
-if "%MainChoice%"=="3"
+if "%MainChoice%"=="1" (
+    set "url=https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise64.msi"
+    set "BrowserName=Google Chrome"
+    set size=700MB
+    set filename=googlechromestandaloneenterprise64.msi
+    goto :Browsers
+)
+if "%MainChoice%"=="2" (
+    set "url=https://c2rsetup.officeapps.live.com/c2r/downloadEdge.aspx?platform=Default&source=EdgeStablePage&Channel=Stable&language=en&brand=M100"
+    set "BrowserName=Microsoft Edge + Webview2"
+    set size=2GB
+    set filename=MicrosoftEdgeSetup.exe
+    goto :Browsers
+)
+if "%MainChoice%"=="3" (
+    set "url=https://cdn.stubdownloader.services.mozilla.com/builds/firefox-stub/en-US/win/746f4a5dece94827ae568e0b417f9b0ed3da8fe19c9a4dcb1cd674173b6ec10a/Firefox%20Installer.exe"
+    set "BrowserName=Mozilla Firefox"
+    set size=300MB
+    set "filename=Firefox_Setup.exe"
+    goto :Browsers
+)
 if "%MainChoice%"=="4"
 if "%MainChoice%"=="5"
 if "%MainChoice%"=="6"
@@ -183,10 +203,23 @@ if "%MainChoice%"=="Z"
 if "%MainChoice%"=="x"
 if "%MainChoice%"=="X"
 
-:Chrome
+:Browsers
 cls
 call :CreUI
-%nhcolor% 07 " Do you want to install Google Chrome?"
-%nhcolor% 07 " [1] YES (>700MB)              [2] NO"
-set /p ChromeChoice=" %SWhite%Enter Your Choice and ENTER: "
-if
+%nhcolor% 07 " Do you want to install %BrowserName%?"
+%nhcolor% 07 " [1] YES (>%size%)              [2] NO"
+set /p BrowserChoice="Enter Your Choice and ENTER: "
+if "!BrowserChoice!"=="1" goto :BrowserInstall
+if "!BrowserChoice!"=="2" (
+    goto :Main
+)
+:BrowserInstall
+echo.
+%nhcolor% 07 "Downloading %BrowserName%..."
+%wget% --output-document="%filename%" -q --show-progress "%url%"
+move %filename% %Temp%\%filename% >nul
+%nhcolor% 07 "Installing %BrowserName%..."
+%Temp%\%filename%
+%nhcolor% 07 "Done"
+timeout /t 5 /nobreak>nul
+goto :Main
