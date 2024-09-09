@@ -162,10 +162,10 @@ if "%MainChoice%"=="2" (
     goto :Browsers
 )
 if "%MainChoice%"=="3" (
-    set "url=https://cdn.stubdownloader.services.mozilla.com/builds/firefox-stub/en-US/win/746f4a5dece94827ae568e0b417f9b0ed3da8fe19c9a4dcb1cd674173b6ec10a/Firefox%20Installer.exe"
+    set "url=https://github.com/ShilukaYT/Win-Toolbox/raw/main/RawCloud/FirefoxInstaller.exe"
     set "BrowserName=Mozilla Firefox"
     set size=300MB
-    set "filename=Firefox_Setup.exe"
+    set "filename=FirefoxInstaller.exe"
     goto :Browsers
 )
 if "%MainChoice%"=="4"
@@ -220,6 +220,27 @@ echo.
 move %filename% %Temp%\%filename% >nul
 %nhcolor% 07 "Installing %BrowserName%..."
 %Temp%\%filename%
+%nhcolor% 07 "Done"
+timeout /t 5 /nobreak>nul
+goto :Main
+
+:WinRAR
+cls
+call :CreUI
+%nhcolor% 07 " Do you want to install WinRAR?"
+%nhcolor% 07 " [1] YES (10MB)              [2] NO"
+set /p BrowserChoice="Enter Your Choice and ENTER: "
+if "!BrowserChoice!"=="1" goto :WinRARInstall
+if "!BrowserChoice!"=="2" (
+    goto :Main
+)
+:WinRARInstall
+echo.
+%nhcolor% 07 "Downloading WinRAR..."
+%wget% --output-document="winrar-x64-701.exe" -q --show-progress "https://www.rarlab.com/rar/winrar-x64-701.exe"
+move winrar-x64-701.exe %Temp%\winrar-x64-701.exe >nul
+%nhcolor% 07 "Installing WinRAR..."
+%Temp%\winrar-x64-701.exe /S
 %nhcolor% 07 "Done"
 timeout /t 5 /nobreak>nul
 goto :Main
