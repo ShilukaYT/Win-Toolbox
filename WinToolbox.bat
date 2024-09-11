@@ -7,6 +7,7 @@ set "ver=1.0"
 set "vercode=1"
 
 goto :Basic
+::========================================================================================================================================================
 
 ::Function
 :GetOSInfo
@@ -40,6 +41,7 @@ for /f "tokens=6-7 delims=[.] " %%i in ('ver') do set build=%%i.%%j
 for /f "tokens=2*" %%a in ('reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v "DisplayVersion" 2^>nul') do set "Ver=%%b"
 
 goto :EOF
+::========================================================================================================================================================
 
 :Basic
 title %AppName%
@@ -50,6 +52,8 @@ set Temp=%~dp0Temp
 set Download=%~dp0Downloads
 
 if not exist %Temp% mkdir %Temp%
+::========================================================================================================================================================
+
 ::Set color
 :: NORMAL FOREG COLORS
 set nhcolorsetcolor=
@@ -98,6 +102,7 @@ set Red=%nhcolorsetcolor%[31m
 set Yellow=%nhcolorsetcolor%[33m
 set Lightgray=%nhcolorsetcolor%[37m
 set Bold=%nhcolorsetcolor%[1m
+::========================================================================================================================================================
 
 set nhcolor=%Bin%\nhcolor.exe
 set wget=%Bin%\wget.exe
@@ -108,6 +113,7 @@ set DisableX=%Bin%\ConsoleNoClose.exe
 set "Line================================================================================================"
 
 goto :Main
+::========================================================================================================================================================
 
 :CreUI
 :: Create UI
@@ -117,6 +123,7 @@ echo                                    Made by %SBlue%Hieu GL Lite
 %nhcolor% 07 %line%
 echo.
 goto :EOF
+::========================================================================================================================================================
 
 :Main
 cls
@@ -214,6 +221,11 @@ if "%MainChoice%"=="z"
 if "%MainChoice%"=="Z"
 if "%MainChoice%"=="x"
 if "%MainChoice%"=="X"
+echo.
+echo This function not available yet
+timeout /t 2 >nul
+goto :Main
+::========================================================================================================================================================
 
 :Browsers
 cls
@@ -225,6 +237,10 @@ if "!BrowserChoice!"=="1" goto :BrowserInstall
 if "!BrowserChoice!"=="2" (
     goto :Main
 )
+echo.
+echo This function not available yet
+timeout /t 2 >nul
+goto :Browsers
 :BrowserInstall
 echo.
 %nhcolor% 07 "Downloading %BrowserName%..."
@@ -236,6 +252,7 @@ move %filename% %Temp%\%filename% >nul
 del /s /q %Temp%\%filename% >nul
 timeout /t 5 /nobreak>nul
 goto :Main
+::========================================================================================================================================================
 
 :WinRAR
 cls
@@ -247,6 +264,10 @@ if "!AppChoice!"=="1" goto :WinRARInstall
 if "!AppChoice!"=="2" (
     goto :Main
 )
+echo.
+echo This function not available yet
+timeout /t 2 >nul
+goto :WinRAR
 :WinRARInstall
 echo.
 %nhcolor% 07 "Downloading WinRAR..."
@@ -260,6 +281,7 @@ move rarreg.key "%ProgramFiles%\WinRAR\rarreg.key">nul
 del /s /q winrar-x64-701.exe >nul
 timeout /t 5 /nobreak>nul
 goto :Main
+::========================================================================================================================================================
 
 :VLC
 cls
@@ -271,6 +293,10 @@ if "!AppChoice!"=="1" goto :VLCInstall
 if "!AppChoice!"=="2" (
     goto :Main
 )
+echo.
+echo This function not available yet
+timeout /t 2 >nul
+goto :VLC
 :VLCInstall
 echo.
 %nhcolor% 07 "Downloading VLC Media Player..."
@@ -282,7 +308,7 @@ move vlc-3.0.21-win64.exe %Temp%\vlc-3.0.21-win64.exe >nul
 del /s /q %Temp%\vlc-3.0.21-win64.exe
 timeout /t 5 /nobreak>nul
 goto :Main
-
+::========================================================================================================================================================
 :MSStoreApp
 cls
 call :CreUI
@@ -293,6 +319,10 @@ if "!AppChoice!"=="1" goto :MSStoreAppInstall
 if "!AppChoice!"=="2" (
     goto :Main
 )
+echo.
+echo This function not available yet
+timeout /t 2 >nul
+goto :MSStoreApp
 :MSStoreAppInstall
 %nhcolor% 07 "Downloading %AppName%..."
 %wget% --output-document="%filename%" -q --show-progress "https://get.microsoft.com/installer/download/!id!?hl=en-us&referrer=storeforweb&source"
