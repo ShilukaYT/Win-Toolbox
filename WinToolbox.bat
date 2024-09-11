@@ -333,3 +333,31 @@ move %filename% %Temp%\%filename% >nul
 del /s /q %Temp%\%filename% >nul
 timeout /t 5 /nobreak>nul
 goto :Main
+
+:Office
+cls
+call :CreUI
+%nhcolor% 07 " Do you want to install Microsoft Office (Microsoft 365)?"
+%nhcolor% 07 " [1] YES (4GB)              [2] NO"
+set /p AppChoice="Enter Your Choice and ENTER: "
+if "!AppChoice!"=="1" goto :OfficeInstall
+if "!AppChoice!"=="2" (
+    goto :Main
+)
+echo.
+echo This function not available yet
+timeout /t 2 >nul
+goto :OfficeInstall
+:OfficeInstall
+%nhcolor% 07 "Downloading Microsoft Office (Microsoft 365)..."
+%wget% --output-document="setup.exe" -q --show-progress "https://github.com/ShilukaYT/Win-Toolbox/raw/main/RawCloud/setup.exe"
+%wget% --output-document="OfficeConfiguration.xml" -q --show-progress "https://github.com/ShilukaYT/Win-Toolbox/raw/main/RawCloud/OfficeConfiguration.xml"
+move setup.exe %Temp%\setup.exe >nul
+move setup.exe %Temp%\OfficeConfiguration.xml >nul
+%nhcolor% 07 "Installing Microsoft Office (Microsoft 365)..."
+%Temp%\setup.exe /configure %Temp%\OfficeConfiguration.xml
+%nhcolor% 07 "Done"
+del /s /q %Temp%\setup.exe >nul
+del /s /q %Temp%\OfficeConfiguration.xml >nul
+timeout /t 5 /nobreak>nul
+goto :Main
