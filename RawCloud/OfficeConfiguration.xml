@@ -1,0 +1,19 @@
+﻿<Configuration>
+  <Add OfficeClientEdition="64" Channel="Current" AllowCdnFallback="true">
+    <Product ID="O365ProPlusRetail">
+      <Language ID="MatchOS" Fallback="en-us" />
+      <Language ID="en-us" />
+      <ExcludeApp ID="Bing" />
+      <ExcludeApp ID="Groove" />
+      <ExcludeApp ID="Lync" />
+      <ExcludeApp ID="OneDrive" />
+      <ExcludeApp ID="OneNote" />
+      <ExcludeApp ID="Outlook" />
+      <ExcludeApp ID="Publisher" />
+      <ExcludeApp ID="Teams" />
+    </Product>
+  </Add>
+  <Display AcceptEULA="True" />
+  <Updates Enabled="true" />
+  <Extend CreateShortcuts="true" />
+</Configuration>
