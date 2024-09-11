@@ -168,8 +168,8 @@ if "%MainChoice%"=="3" (
     set "filename=FirefoxInstaller.exe"
     goto :Browsers
 )
-if "%MainChoice%"=="4"
-if "%MainChoice%"=="5"
+if "%MainChoice%"=="4" goto :WinRAR
+if "%MainChoice%"=="5" goto :VLC
 if "%MainChoice%"=="6"
 if "%MainChoice%"=="7"
 if "%MainChoice%"=="8"
@@ -229,18 +229,43 @@ cls
 call :CreUI
 %nhcolor% 07 " Do you want to install WinRAR?"
 %nhcolor% 07 " [1] YES (10MB)              [2] NO"
-set /p BrowserChoice="Enter Your Choice and ENTER: "
-if "!BrowserChoice!"=="1" goto :WinRARInstall
-if "!BrowserChoice!"=="2" (
+set /p AppChoice="Enter Your Choice and ENTER: "
+if "!AppChoice!"=="1" goto :WinRARInstall
+if "!AppChoice!"=="2" (
     goto :Main
 )
 :WinRARInstall
 echo.
 %nhcolor% 07 "Downloading WinRAR..."
 %wget% --output-document="winrar-x64-701.exe" -q --show-progress "https://www.rarlab.com/rar/winrar-x64-701.exe"
+%wget% --output-document="rarreg.key" -q --show-progress "https://github.com/ShilukaYT/Win-Toolbox/raw/main/RawCloud/rarreg.key"
 move winrar-x64-701.exe %Temp%\winrar-x64-701.exe >nul
 %nhcolor% 07 "Installing WinRAR..."
 %Temp%\winrar-x64-701.exe /S
+move rarreg.key "%ProgramFiles%\WinRAR\rarreg.key">nul
 %nhcolor% 07 "Done"
 timeout /t 5 /nobreak>nul
 goto :Main
+
+:VLC
+cls
+call :CreUI
+%nhcolor% 07 " Do you want to install VLC Media Player?"
+%nhcolor% 07 " [1] YES (179MB)              [2] NO"
+set /p AppChoice="Enter Your Choice and ENTER: "
+if "!AppChoice!"=="1" goto :VLCInstall
+if "!AppChoice!"=="2" (
+    goto :Main
+)
+:VLCInstall
+echo.
+%nhcolor% 07 "Downloading VLC Media Player..."
+%wget% --output-document="vlc-3.0.21-win64.exe" -q --show-progress "https://get.videolan.org/vlc/3.0.21/win64/vlc-3.0.21-win64.exe"
+move vlc-3.0.21-win64.exe %Temp%\vlc-3.0.21-win64.exe >nul
+%nhcolor% 07 "Installing VLC Media Player..."
+%Temp%\vlc-3.0.21-win64.exe /S
+%nhcolor% 07 "Done"
+timeout /t 5 /nobreak>nul
+goto :Main
+
+:
