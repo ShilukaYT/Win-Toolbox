@@ -170,8 +170,20 @@ if "%MainChoice%"=="3" (
 )
 if "%MainChoice%"=="4" goto :WinRAR
 if "%MainChoice%"=="5" goto :VLC
-if "%MainChoice%"=="6"
-if "%MainChoice%"=="7"
+if "%MainChoice%"=="6" (
+    set id=9wzdncrfj3pt
+    set "AppName=Windows Media Player (UWP)"
+    set size=51MB
+    set filename=Media_Player.exe
+    goto :MSStoreApp
+)
+if "%MainChoice%"=="7" (
+    set id=9wzdncrfjbh4
+    set "AppName=Microsoft Photos"
+    set size=810MB
+    set filename=Microsoft_Photos.exe
+    goto :MSStoreApp
+)
 if "%MainChoice%"=="8"
 if "%MainChoice%"=="9"
 if "%MainChoice%"=="10"
@@ -221,6 +233,7 @@ move %filename% %Temp%\%filename% >nul
 %nhcolor% 07 "Installing %BrowserName%..."
 %Temp%\%filename%
 %nhcolor% 07 "Done"
+del /s /q %Temp%\%filename% >nul
 timeout /t 5 /nobreak>nul
 goto :Main
 
@@ -244,6 +257,7 @@ move winrar-x64-701.exe %Temp%\winrar-x64-701.exe >nul
 %Temp%\winrar-x64-701.exe /S
 move rarreg.key "%ProgramFiles%\WinRAR\rarreg.key">nul
 %nhcolor% 07 "Done"
+del /s /q winrar-x64-701.exe >nul
 timeout /t 5 /nobreak>nul
 goto :Main
 
@@ -265,7 +279,27 @@ move vlc-3.0.21-win64.exe %Temp%\vlc-3.0.21-win64.exe >nul
 %nhcolor% 07 "Installing VLC Media Player..."
 %Temp%\vlc-3.0.21-win64.exe /S
 %nhcolor% 07 "Done"
+del /s /q %Temp%\vlc-3.0.21-win64.exe
 timeout /t 5 /nobreak>nul
 goto :Main
 
-:
+:MSStoreApp
+cls
+call :CreUI
+%nhcolor% 07 " Do you want to install %AppName%?"
+%nhcolor% 07 " [1] YES (%size%)              [2] NO"
+set /p AppChoice="Enter Your Choice and ENTER: "
+if "!AppChoice!"=="1" goto :MSStoreAppInstall
+if "!AppChoice!"=="2" (
+    goto :Main
+)
+:MSStoreAppInstall
+%nhcolor% 07 "Downloading %AppName%..."
+%wget% --output-document="%filename%" -q --show-progress "https://get.microsoft.com/installer/download/!id!?hl=en-us&referrer=storeforweb&source"
+move %filename% %Temp%\%filename% >nul
+%nhcolor% 07 "Installing %AppName%..."
+%Temp%\%filename% 2>nul >nul
+%nhcolor% 07 "Done"
+del /s /q %Temp%\%filename% >nul
+timeout /t 5 /nobreak>nul
+goto :Main
