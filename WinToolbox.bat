@@ -191,8 +191,8 @@ if "%MainChoice%"=="7" (
     set filename=Microsoft_Photos.exe
     goto :MSStoreApp
 )
-if "%MainChoice%"=="8"
-if "%MainChoice%"=="9"
+if "%MainChoice%"=="8" goto :Office
+if "%MainChoice%"=="9" goto :WPSOffice
 if "%MainChoice%"=="10"
 if "%MainChoice%"=="11"
 if "%MainChoice%"=="12"
@@ -333,6 +333,7 @@ move %filename% %Temp%\%filename% >nul
 del /s /q %Temp%\%filename% >nul
 timeout /t 5 /nobreak>nul
 goto :Main
+::========================================================================================================================================================
 
 :Office
 cls
@@ -347,7 +348,7 @@ if "!AppChoice!"=="2" (
 echo.
 echo This function not available yet
 timeout /t 2 >nul
-goto :OfficeInstall
+goto :Office
 :OfficeInstall
 %nhcolor% 07 "Downloading Microsoft Office (Microsoft 365)..."
 %wget% --output-document="setup.exe" -q --show-progress "https://github.com/ShilukaYT/Win-Toolbox/raw/main/RawCloud/setup.exe"
@@ -359,5 +360,31 @@ move setup.exe %Temp%\OfficeConfiguration.xml >nul
 %nhcolor% 07 "Done"
 del /s /q %Temp%\setup.exe >nul
 del /s /q %Temp%\OfficeConfiguration.xml >nul
+timeout /t 5 /nobreak>nul
+goto :Main
+::========================================================================================================================================================
+
+:WPSOffice
+cls
+call :CreUI
+%nhcolor% 07 " Do you want to install WPS Office?"
+%nhcolor% 07 " [1] YES (1GB)              [2] NO"
+set /p AppChoice="Enter Your Choice and ENTER: "
+if "!AppChoice!"=="1" goto :WPSOfficeInstall
+if "!AppChoice!"=="2" (
+    goto :Main
+)
+echo.
+echo This function not available yet
+timeout /t 2 >nul
+goto :WPSOffice
+:WPSOfficeInstall
+%nhcolor% 07 "Downloading WPS Office..."
+%wget% --output-document="WPSOffice_12.2.0.18283.exe" -q --show-progress "https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/12.2.0.18283/500.1001/WPSOffice_12.2.0.18283.exe"
+move WPSOffice_12.2.0.18283.exe %Temp%\WPSOffice_12.2.0.18283.exe >nul
+%nhcolor% 07 "Installing Microsoft Office (Microsoft 365)..."
+%Temp%\WPSOffice_12.2.0.18283.exe -S
+%nhcolor% 07 "Done"
+del /s /q %Temp%\WPSOffice_12.2.0.18283.exe >nul
 timeout /t 5 /nobreak>nul
 goto :Main
