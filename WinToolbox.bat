@@ -137,7 +137,7 @@ echo                                    Application Installer
 %nhcolor% 07 " %Green%- Internet Browser                 - Game Client               - Android Games"
 %nhcolor% 07 " %Yellow%+ [1] Google Chrome                %Blue%+ [11] Steam                %Magenta%+ [23] Google Play Games"
 %nhcolor% 07 " %Yellow%+ [2] Microsoft Edge + Webview2    %Blue%+ [12] Epic Games           %Magenta%+ [24] Free Fire MAX"
-%nhcolor% 07 " %Yellow%+ [3] Mozilla Firefox              %Blue%+ [13] Xbox                 %Magenta%+ [25] Clash of Clans"
+%nhcolor% 07 " %Yellow%+ [3] Mozilla Firefox              %Blue%+ [13] Riot Client          %Magenta%+ [25] Clash of Clans"
 %nhcolor% 07 " %SWhite%- Zip and Unzip                    %Blue%+ [14] HoyoPlay             %SBlue%- System components"
 %nhcolor% 07 " %SRed%+ [4] WinRAR (Activated)           %SCyan%- Software Development      %Lightgray%+ [26] Visual C++ 2005 - 2022"
 %nhcolor% 07 " %SMagenta%- Multimedia                       %SMagenta%+ [15] Visual Studio Code   %Lightgray%+ [27] DirectX
@@ -148,7 +148,7 @@ echo                                    Application Installer
 %nhcolor% 07 " %SLightGray%+ [8] Microsoft Office             %Bold%- Android Emulator          %Blue%- Recording and Live Streaming
 %nhcolor% 07 " %SLightGray%+ [9] WPS Office                   %SRed%+ [20] BlueStacks           %Green%+ [31] OBS Studio
 %nhcolor% 07 " %SGreen%- App Store                        %SRed%+ [21] LDPlayer             %Green%+ [32] Streamlab OBS
-%nhcolor% 07 " + [10] Microsoft Store             %SRed%+ [22] MSI App Player       %Green%+ [33] TikTok Live Studio
+%nhcolor% 07 " + [10] Microsoft Store and Xbox    %SRed%+ [22] MSI App Player       %Green%+ [33] TikTok Live Studio
 %nhcolor% 07 %line%
 %nhcolor% 07 " [Z] Subscribe to Hieu GL Lite                                         Page 1"
 %nhcolor% 07 " [X] Quit"
