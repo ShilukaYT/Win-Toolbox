@@ -390,3 +390,28 @@ timeout /t 5 /nobreak>nul
 goto :Main
 ::========================================================================================================================================================
 
+:MSStore+Xbox
+cls
+call :CreUI
+%nhcolor% 07 " Do you want to install Microsoft Store and Xbox?"
+%nhcolor% 07 " [1] YES              [2] NO"
+set /p AppChoice="Enter Your Choice and ENTER: "
+if "!AppChoice!"=="1" goto :MSStore+XboxInstall
+if "!AppChoice!"=="2" (
+    goto :Main
+)
+echo.
+echo This function not available yet
+timeout /t 2 >nul
+goto :MSStore+XboxInstall
+:MSStore+XboxInstall
+%nhcolor% 07 "Downloading files..."
+%wget% --output-document="WPSOffice_12.2.0.18283.exe" -q --show-progress "https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/12.2.0.18283/500.1001/WPSOffice_12.2.0.18283.exe"
+move WPSOffice_12.2.0.18283.exe %Temp%\WPSOffice_12.2.0.18283.exe >nul
+"%aria2%" --no-conf --async-dns=false --console-log-level=warn --log-level=info --log="aria2_download.log" -x16 -s16 -j25 -c -R -d"%destDir%" -i"%aria2Script%"
+%nhcolor% 07 "Installing Microsoft Office (Microsoft 365)..."
+%Temp%\WPSOffice_12.2.0.18283.exe -S
+%nhcolor% 07 "Done"
+del /s /q %Temp%\WPSOffice_12.2.0.18283.exe >nul
+timeout /t 5 /nobreak>nul
+goto :Main
